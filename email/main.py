@@ -17,7 +17,7 @@ def post_email(data, context):
         users = [user.to_dict().get('email') for user in user_ref.stream()]
         msg = MIMEText(f"A new post '{post_data['title']['stringValue']}' has been created.\n\n{post_data['content']['stringValue']}")
         msg['Subject'] = 'New post created'
-        msg['From'] = 'theashesinetwork@gmail.com'
+        msg['From'] = ''
         msg['To'] = ", ".join(users)
         ssl_context = ssl.create_default_context()
         with smtplib.SMTP_SSL('smtp.gmail.com', 465,context=ssl_context) as smtp:
